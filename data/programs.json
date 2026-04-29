@@ -1,0 +1,11 @@
+[
+  { "id": "sihr_tafriq_standard", "name_ru": "Сихр разлада — стандартная", "illness_types": ["sihr_tafriq"], "duration_default": 14, "blocks": ["cleansing", "homeBlock", "defense", "closing", "waterOil", "final", "dua"] },
+  { "id": "sihr_mahfi_course", "name_ru": "Скрытый сихр — полный курс", "illness_types": ["sihr_mahfi"], "duration_default": 14, "blocks": ["cleansing", "defense", "closing", "waterOil", "final", "dua"] },
+  { "id": "massas_jinn_intensive", "name_ru": "Касание джинна — интенсив", "illness_types": ["massas_jinn"], "duration_default": 21, "blocks": ["cleansing", "homeBlock", "defense", "closing", "waterOil", "final", "soulKnots", "dua"] },
+  { "id": "ayn_hasida_light", "name_ru": "Сглаз — лёгкий курс", "illness_types": ["ayn_hasida", "hasad"], "duration_default": 7, "blocks": ["cleansing", "defense", "closing", "final", "dua"] },
+  { "id": "waswasa_dini_course", "name_ru": "Васваса — духовный курс", "illness_types": ["waswasa_dini"], "duration_default": 10, "blocks": ["cleansing", "defense", "closing", "soulKnots", "dua"] },
+  { "id": "sihr_mahabba_break", "name_ru": "Сихр привязанности — разрыв", "illness_types": ["sihr_mahabba"], "duration_default": 14, "blocks": ["cleansing", "homeBlock", "defense", "closing", "waterOil", "final", "dua"] },
+  { "id": "sihr_bayt_full", "name_ru": "Сихр в доме — полная чистка", "illness_types": ["sihr_bayt"], "duration_default": 18, "blocks": ["cleansing", "homeBlock", "defense", "closing", "waterOil", "final", "dua"] },
+  { "id": "combined_sihr_jinn", "name_ru": "Сихр + джинн — связка", "illness_types": ["sihr_mahfi", "massas_jinn"], "duration_default": 21, "blocks": ["cleansing", "homeBlock", "defense", "closing", "waterOil", "final", "soulKnots", "dua"] },
+  { "id": "children_protection", "name_ru": "Детский курс — защита", "illness_types": ["ayn_hasida"], "duration_default": 7, "blocks": ["cleansing", "defense", "closing", "dua"] }
+]

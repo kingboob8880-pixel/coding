@@ -1,0 +1,31 @@
+{
+  "cleansing": [
+    { "template_id": "ruqya_targeted", "attribute": "al_shafi", "organ": "qalb", "illness": "sihr_mahfi", "action": "dissolve", "repeats": 7 },
+    { "template_id": "ruqya_targeted", "attribute": "al_qadir", "organ": "sadr", "illness": "sihr_tafriq", "action": "break", "repeats": 11 }
+  ],
+  "homeBlock": [
+    { "template_id": "protection_body", "attribute": "al_hafiz", "organ": "jasad", "illness": "sihr_bayt", "action": "protect", "repeats": 3 },
+    { "template_id": "closing_doors", "attribute": "al_muhaymin", "organ": "batn", "illness": "massas_jinn", "action": "expel", "repeats": 5 }
+  ],
+  "defense": [
+    { "template_id": "protection_body", "attribute": "al_hafiz", "organ": "jasad", "illness": "ayn_hasida", "action": "shield", "repeats": 3 },
+    { "template_id": "protection_body", "attribute": "al_aziz", "organ": "qalb", "illness": "waswasa_dini", "action": "strengthen", "repeats": 5 }
+  ],
+  "closing": [
+    { "template_id": "closing_doors", "attribute": "al_hakim", "organ": "ras", "illness": "khawf", "action": "close", "repeats": 3 }
+  ],
+  "waterOil": [
+    { "template_id": "water_cleansing", "attribute": "al_shafi", "organ": "batn", "illness": "sihr_mahfi", "action": "cleanse", "repeats": 1 },
+    { "template_id": "oil_protection", "attribute": "al_muafi", "organ": "jasad", "illness": "massas_jinn", "action": "anoint", "repeats": 1 }
+  ],
+  "final": [
+    { "template_id": "return_evil", "attribute": "al_qadir", "organ": "jasad", "illness": "sihr_tafriq", "action": "return", "repeats": 3 },
+    { "template_id": "inaccessibility", "attribute": "al_hafiz", "organ": "qalb", "illness": "ayn_hasida", "action": "seal", "repeats": 3 }
+  ],
+  "soulKnots": [
+    { "template_id": "dua_healing", "attribute": "al_rahman", "organ": "qalb", "illness": "huzn", "action": "heal", "repeats": 7 }
+  ],
+  "dua": [
+    { "template_id": "dua_healing", "attribute": "al_shafi", "organ": "jasad", "illness": "waswasa_dini", "action": "cure", "repeats": 3 }
+  ]
+}

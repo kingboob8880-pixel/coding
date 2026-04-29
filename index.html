@@ -3,130 +3,655 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лекарь Абу Мухаммад</title>
+    <meta name="theme-color" content="#c9a961">
+    <meta name="description" content="RUKYA PRO — Профессиональная система для специалистов по рукье">
+    <title>RUKYA PRO | Ash-Shifa · Абу Мухаммад</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- PWA Manifest (inline for file:// support) -->
+    <link rel="manifest" id="manifest-placeholder">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
+        /* Additional app-specific styles */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        .top-bar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            font-family: 'Georgia', 'Times New Roman', serif;
-            overflow: hidden;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
         }
-
-        .container {
-            text-align: center;
-            position: relative;
-            z-index: 1;
+        
+        .page-title {
+            font-size: 1.5rem;
+            color: var(--primary);
         }
-
-        .title {
-            font-size: 4rem;
-            color: #e8d5b7;
-            text-shadow: 0 0 20px rgba(232, 213, 183, 0.5),
-                         0 0 40px rgba(232, 213, 183, 0.3),
-                         0 0 60px rgba(232, 213, 183, 0.2);
-            letter-spacing: 3px;
-            animation: glow 3s ease-in-out infinite alternate;
-            padding: 40px 60px;
-            border: 3px solid rgba(232, 213, 183, 0.3);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 20px rgba(232, 213, 183, 0.5),
-                             0 0 40px rgba(232, 213, 183, 0.3),
-                             0 0 60px rgba(232, 213, 183, 0.2);
-            }
-            to {
-                text-shadow: 0 0 30px rgba(232, 213, 183, 0.8),
-                             0 0 60px rgba(232, 213, 183, 0.5),
-                             0 0 90px rgba(232, 213, 183, 0.3);
-            }
-        }
-
-        .ornament {
-            font-size: 2rem;
-            color: #c9a961;
-            margin-top: 20px;
-            opacity: 0.8;
-        }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(232, 213, 183, 0.6);
-            border-radius: 50%;
-            animation: float 15s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
+        
         @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-                padding: 30px 40px;
-            }
+            .mobile-menu-btn { display: block; }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
+    <!-- Star field background -->
+    <div class="star-field" id="starField"></div>
     
-    <div class="container">
-        <h1 class="title">Лекарь Абу Мухаммад</h1>
-        <div class="ornament">✦ ⚜ ✦</div>
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- App container -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="nav-brand">
+                <h1>
+                    <span>☤</span>
+                    RUKYA PRO
+                </h1>
+                <div class="subtitle">Ash-Shifa · Абу Мухаммад</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#/dashboard" class="nav-link active" data-page="dashboard">
+                        <span class="icon">📊</span>
+                        <span>Дашборд</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/newcase" class="nav-link" data-page="newcase">
+                        <span class="icon">➕</span>
+                        <span>Новый приём</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/patients" class="nav-link" data-page="patients">
+                        <span class="icon">👥</span>
+                        <span>Пациенты</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/plans" class="nav-link" data-page="plans">
+                        <span class="icon">📋</span>
+                        <span>Планы</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/groups" class="nav-link" data-page="groups">
+                        <span class="icon">📁</span>
+                        <span>Группы</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/calendar" class="nav-link" data-page="calendar">
+                        <span class="icon">📅</span>
+                        <span>Календарь</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/certificates" class="nav-link" data-page="certificates">
+                        <span class="icon">📜</span>
+                        <span>Заключения</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/library" class="nav-link" data-page="library">
+                        <span class="icon">📚</span>
+                        <span>Библиотека</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/import" class="nav-link" data-page="import">
+                        <span class="icon">📥</span>
+                        <span>Импорт JSON</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#/settings" class="nav-link" data-page="settings">
+                        <span class="icon">⚙️</span>
+                        <span>Настройки</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Main content -->
+        <main class="main-content" id="mainContent">
+            <!-- Top bar -->
+            <div class="top-bar">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <h2 class="page-title" id="pageTitle">Дашборд</h2>
+                <div class="user-actions">
+                    <button class="btn btn-sm btn-outline" id="globalSearchBtn" title="Ctrl+K">
+                        🔍 Поиск
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Pages -->
+            <div id="pagesContainer">
+                <!-- Dashboard -->
+                <div id="page-dashboard" class="page active">
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiTotalPatients">0</div>
+                            <div class="kpi-label">Всего пациентов</div>
+                            <div class="kpi-delta up" id="kpiTotalDelta">↑ 0</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiActivePatients">0</div>
+                            <div class="kpi-label">Активных</div>
+                            <div class="kpi-delta up" id="kpiActiveDelta">↑ 0</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiPausedPatients">0</div>
+                            <div class="kpi-label">На паузе</div>
+                            <div class="kpi-delta" id="kpiPausedDelta">—</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiCompletedPatients">0</div>
+                            <div class="kpi-label">Завершённых</div>
+                            <div class="kpi-delta up" id="kpiCompletedDelta">↑ 0</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiPlans">0</div>
+                            <div class="kpi-label">Планов</div>
+                            <div class="kpi-delta" id="kpiPlansDelta">—</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value" id="kpiCertificates">0</div>
+                            <div class="kpi-label">Заключений</div>
+                            <div class="kpi-delta" id="kpiCertificatesDelta">—</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-2">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Визиты сегодня</h3>
+                                <button class="btn btn-sm btn-primary" onclick="app.navigate('#/calendar')">Все визиты</button>
+                            </div>
+                            <div class="card-body" id="todayVisits">
+                                <p class="text-muted text-center">Нет запланированных визитов</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Быстрые действия</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="flex flex-col gap-12">
+                                    <button class="btn btn-primary" onclick="app.navigate('#/newcase')">
+                                        ➕ Новый приём
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="app.navigate('#/patients')">
+                                        👥 Все пациенты
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="app.navigate('#/plans')">
+                                        📋 Планы лечения
+                                    </button>
+                                    <button class="btn btn-outline" onclick="app.navigate('#/import')">
+                                        📥 Импорт JSON
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- New Case Wizard -->
+                <div id="page-newcase" class="page">
+                    <div class="wizard">
+                        <div class="wizard-progress">
+                            <div class="wizard-step active" data-step="1">
+                                <div class="wizard-step-number">1</div>
+                                <div class="wizard-step-label">Пациент и жалобы</div>
+                            </div>
+                            <div class="wizard-step" data-step="2">
+                                <div class="wizard-step-number">2</div>
+                                <div class="wizard-step-label">Диагностика</div>
+                            </div>
+                            <div class="wizard-step" data-step="3">
+                                <div class="wizard-step-number">3</div>
+                                <div class="wizard-step-label">Программа и план</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 1: Patient & Complaints -->
+                        <div class="wizard-step-content" id="wizardStep1">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Шаг 1: Данные пациента и жалобы</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form id="patientForm">
+                                        <div class="grid grid-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Имя *</label>
+                                                <input type="text" class="form-control" id="patientName" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Возраст</label>
+                                                <input type="number" class="form-control" id="patientAge" min="1" max="120">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Пол</label>
+                                                <select class="form-control" id="patientGender">
+                                                    <option value="">Не указано</option>
+                                                    <option value="male">Мужской</option>
+                                                    <option value="female">Женский</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Телефон</label>
+                                                <input type="tel" class="form-control" id="patientPhone">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="grid grid-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Город</label>
+                                                <input type="text" class="form-control" id="patientCity">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Группа</label>
+                                                <select class="form-control" id="patientGroup">
+                                                    <option value="">Без группы</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Жалобы</label>
+                                            <div class="flex gap-8 mb-8">
+                                                <button type="button" class="btn btn-sm btn-secondary" id="voiceInputBtn">
+                                                    🎙 Голосовой ввод
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-secondary" id="importJsonBtn">
+                                                    📥 Импорт JSON
+                                                </button>
+                                            </div>
+                                            <textarea class="form-control" id="patientComplaints" rows="5" placeholder="Опишите симптомы и жалобы пациента..."></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Быстрый опросник</label>
+                                            <div class="checkbox-group" id="symptomChecklist">
+                                                <!-- Will be populated by JS -->
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card mt-16" id="preliminaryDiagnosis" style="display: none;">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Предварительный диагноз</h4>
+                                            </div>
+                                            <div class="card-body" id="preliminaryDiagnosisContent"></div>
+                                        </div>
+                                        
+                                        <div class="mt-20 flex justify-between">
+                                            <button type="button" class="btn btn-secondary" onclick="app.navigate('#/dashboard')">Отмена</button>
+                                            <button type="button" class="btn btn-primary" id="step1NextBtn">Далее →</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Diagnosis -->
+                        <div class="wizard-step-content" id="wizardStep2" style="display: none;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Шаг 2: Диагностика</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="filter-tabs mb-16">
+                                        <button class="filter-tab active" data-diag-mode="local">⚙️ Локально</button>
+                                        <button class="filter-tab" data-diag-mode="manual">✍️ Вручную</button>
+                                        <button class="filter-tab" data-diag-mode="json">📥 Из JSON</button>
+                                        <button class="filter-tab" data-diag-mode="ai">🔬 AI-анализ</button>
+                                    </div>
+                                    
+                                    <div id="diagLocal">
+                                        <p class="text-muted mb-16">Автоматический анализ жалоб и опросника встроенным алгоритмом</p>
+                                        <button class="btn btn-primary" id="runLocalDiagnosis">Запустить анализ</button>
+                                    </div>
+                                    
+                                    <div id="diagManual" style="display: none;">
+                                        <div class="form-group">
+                                            <label class="form-label">Типы недугов</label>
+                                            <div class="chips" id="manualIllnesses"></div>
+                                            <select class="form-control mt-8" id="addIllnessSelect">
+                                                <option value="">Выбрать недуг...</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="form-label">Затронутые органы</label>
+                                            <div class="chips" id="manualOrgans"></div>
+                                            <select class="form-control mt-8" id="addOrganSelect">
+                                                <option value="">Выбрать орган...</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="grid grid-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Тяжесть (1-5)</label>
+                                                <input type="range" class="form-control" id="manualSeverity" min="1" max="5" value="3">
+                                                <div class="text-center mt-8"><span id="severityValue">3</span>/5</div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Наличие джинна</label>
+                                                <select class="form-control" id="manualJinn">
+                                                    <option value="none">Нет</option>
+                                                    <option value="marid">Марид</option>
+                                                    <option value="amir">Амир</option>
+                                                    <option value="qarin">Карин</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="diagJson" style="display: none;">
+                                        <div class="form-group">
+                                            <label class="form-label">Вставьте JSON диагноза</label>
+                                            <textarea class="form-control" id="jsonDiagnosisInput" rows="8" placeholder='{"illnesses": [...], "organs": [...], ...}'></textarea>
+                                        </div>
+                                        <button class="btn btn-primary" id="parseJsonDiagnosis">Обработать JSON</button>
+                                    </div>
+                                    
+                                    <div id="diagAi" style="display: none;">
+                                        <div class="form-group">
+                                            <label class="form-label">Жалобы для AI-анализа</label>
+                                            <textarea class="form-control" id="aiComplaintsInput" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">DeepSeek API ключ</label>
+                                            <input type="password" class="form-control" id="deepseekApiKey" placeholder="sk-...">
+                                        </div>
+                                        <button class="btn btn-primary" id="runAiDiagnosis">Запустить AI-диагностику</button>
+                                    </div>
+                                    
+                                    <div class="card mt-16" id="diagnosisResult" style="display: none;">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Результат диагностики</h4>
+                                        </div>
+                                        <div class="card-body" id="diagnosisResultContent"></div>
+                                    </div>
+                                    
+                                    <div class="mt-20 flex justify-between">
+                                        <button type="button" class="btn btn-secondary" onclick="wizard.goToStep(1)">← Назад</button>
+                                        <button type="button" class="btn btn-primary" id="step2NextBtn">Далее →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Program & Plan -->
+                        <div class="wizard-step-content" id="wizardStep3" style="display: none;">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Шаг 3: Программа и план лечения</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="form-label">Выбор программы</label>
+                                        <select class="form-control" id="programSelect">
+                                            <option value="">Автоподбор...</option>
+                                        </select>
+                                        <div id="programMatchPercent" class="text-success mt-8"></div>
+                                    </div>
+                                    
+                                    <div class="grid grid-2">
+                                        <div class="form-group">
+                                            <label class="form-label">Длительность курса (дней)</label>
+                                            <select class="form-control" id="courseDuration">
+                                                <option value="3">3 дня</option>
+                                                <option value="7">7 дней</option>
+                                                <option value="10">10 дней</option>
+                                                <option value="14" selected>14 дней</option>
+                                                <option value="18">18 дней</option>
+                                                <option value="21">21 день</option>
+                                                <option value="30">30 дней</option>
+                                                <option value="45">45 дней</option>
+                                                <option value="60">60 дней</option>
+                                                <option value="90">90 дней</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Уровень детализации</label>
+                                            <select class="form-control" id="detailLevel">
+                                                <option value="short">Краткий</option>
+                                                <option value="medium" selected>Средний</option>
+                                                <option value="full">Полный</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Лимит формул: <span id="formulaLimitValue">20</span></label>
+                                        <input type="range" class="form-control" id="formulaLimit" min="5" max="50" value="20">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" id="addSoulKnots">
+                                            <span>Добавить курс духовных зажимов</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <button class="btn btn-primary w-full mb-16" id="buildPlanBtn">🔨 Собрать план лечения</button>
+                                    
+                                    <div class="card" id="planPreview" style="display: none;">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Предпросмотр плана</h4>
+                                        </div>
+                                        <div class="card-body" id="planPreviewContent"></div>
+                                    </div>
+                                    
+                                    <div class="mt-20 flex justify-between">
+                                        <button type="button" class="btn btn-secondary" onclick="wizard.goToStep(2)">← Назад</button>
+                                        <button type="button" class="btn btn-success" id="savePatientBtn">💾 Сохранить пациента и план</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Patients -->
+                <div id="page-patients" class="page">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="form-control" id="patientSearch" placeholder="Поиск по имени, телефону, городу...">
+                    </div>
+                    
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">Все</button>
+                        <button class="filter-tab" data-filter="active">Активные</button>
+                        <button class="filter-tab" data-filter="paused">На паузе</button>
+                        <button class="filter-tab" data-filter="completed">Завершённые</button>
+                    </div>
+                    
+                    <div id="patientsList" class="flex flex-col gap-16">
+                        <!-- Patients will be rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Plans -->
+                <div id="page-plans" class="page">
+                    <div id="plansList" class="flex flex-col gap-16">
+                        <!-- Plans will be rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Groups -->
+                <div id="page-groups" class="page">
+                    <button class="btn btn-primary mb-16" id="createGroupBtn">➕ Создать группу</button>
+                    <div id="groupsList" class="grid grid-3">
+                        <!-- Groups will be rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Calendar -->
+                <div id="page-calendar" class="page">
+                    <div class="flex justify-between items-center mb-16">
+                        <button class="btn btn-secondary" id="prevMonth">←</button>
+                        <h3 id="calendarMonthYear"></h3>
+                        <button class="btn btn-secondary" id="nextMonth">→</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+                
+                <!-- Certificates -->
+                <div id="page-certificates" class="page">
+                    <button class="btn btn-primary mb-16" id="createCertificateBtn">📜 Создать заключение</button>
+                    <div id="certificatesList" class="flex flex-col gap-16">
+                        <!-- Certificates will be rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Library -->
+                <div id="page-library" class="page">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" class="form-control" id="programSearch" placeholder="Поиск программ...">
+                    </div>
+                    <div id="programsList" class="grid grid-3">
+                        <!-- Programs will be rendered here -->
+                    </div>
+                </div>
+                
+                <!-- Import -->
+                <div id="page-import" class="page">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Импорт данных из JSON</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Вставьте JSON или выберите файл</label>
+                                <textarea class="form-control" id="importJsonInput" rows="10" placeholder='{"name": "...", "age": ..., "complaints": "..."}'></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Или загрузите файл</label>
+                                <input type="file" class="form-control" id="importFileInput" accept=".json">
+                            </div>
+                            <div class="flex gap-12">
+                                <button class="btn btn-primary" id="processImportBtn">📥 Обработать импорт</button>
+                                <button class="btn btn-secondary" id="importWithAutoPlan">С автопланом</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings -->
+                <div id="page-settings" class="page">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Настройки системы</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">DeepSeek API ключ</label>
+                                <input type="password" class="form-control" id="settingsApiKey" placeholder="sk-...">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Тема оформления</label>
+                                <select class="form-control" id="settingsTheme">
+                                    <option value="classic">Classic Gold</option>
+                                    <option value="emerald">Emerald</option>
+                                    <option value="night">Night</option>
+                                    <option value="royal">Royal</option>
+                                    <option value="desert">Desert</option>
+                                    <option value="pearl">Pearl</option>
+                                    <option value="marine">Marine</option>
+                                    <option value="sage">Sage</option>
+                                    <option value="sky">Sky</option>
+                                    <option value="obsidian">Obsidian</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Размер шрифта</label>
+                                <div class="flex gap-8">
+                                    <button class="btn btn-sm btn-secondary" id="fontDecrease">A−</button>
+                                    <button class="btn btn-sm btn-secondary" id="fontIncrease">A+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Плотность интерфейса</label>
+                                <select class="form-control" id="settingsDensity">
+                                    <option value="comfort">Comfort</option>
+                                    <option value="compact">Compact</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Имя лекаря (для заключений)</label>
+                                <input type="text" class="form-control" id="settingsHealerName" placeholder="Абу Мухаммад">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" id="settingsHighContrast">
+                                    <span>Высокий контраст</span>
+                                </label>
+                            </div>
+                            
+                            <div class="mt-20">
+                                <button class="btn btn-primary" id="saveSettingsBtn">💾 Сохранить настройки</button>
+                                <button class="btn btn-secondary" id="exportDataBtn">📤 Экспорт базы</button>
+                                <button class="btn btn-secondary" id="importDataBtn">📥 Импорт базы</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <script>
-        // Создание плавающих частиц
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
-
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    </script>
+    
+    <!-- Modal template -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Заголовок</h3>
+                <button class="modal-close" onclick="app.closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer" id="modalFooter"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/builder.js"></script>
+    <script src="js/plan-builder.js"></script>
+    <script src="js/diagnosis.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
