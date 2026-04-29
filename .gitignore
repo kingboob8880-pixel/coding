@@ -1,3 +1,28 @@
-```css
+```
+# Compressed archives
+*.tar.gz
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 
+# Build artifacts
+RukyaPro_v2.1_Export.tar.gz
 ```
