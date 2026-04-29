@@ -1,7 +1,0 @@
-{
-  "sihr": ["al_fatiha", "ayat_al_kursi", "al_falaq", "an_nas"],
-  "jinn": ["ayat_al_kursi", "an_nas", "al_fatiha"],
-  "ayn": ["al_falaq", "an_nas", "al_ikhlas"],
-  "waswasa": ["an_nas", "al_fatiha"],
-  "emotional": ["al_fatiha", "al_ikhlas", "ayat_al_kursi"]
-}
