@@ -1,5 +1,193 @@
 /* RUKYA PRO v2.1 — Анимации и визуальные эффекты */
 
+/* === ГРАДИЕНТНЫЕ АНИМАЦИИ (НОВЫЕ) === */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradient-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes gradient-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+@keyframes gradient-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Градиентные фоны */
+.gradient-animated {
+  background: linear-gradient(-45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.gradient-rotating {
+  background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+  animation: gradient-rotate 10s linear infinite;
+}
+
+.gradient-pulsing {
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+  background-size: 200% 100%;
+  animation: gradient-pulse 3s ease-in-out infinite;
+}
+
+.gradient-flowing {
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% 200%;
+  animation: gradient-flow 8s ease infinite;
+}
+
+/* Градиентный текст */
+.gradient-text {
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 5s ease infinite;
+  font-weight: bold;
+}
+
+/* Градиентные кнопки */
+.btn-gradient {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  border: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background-size: 300% 300%;
+}
+
+/* Градиентные границы */
+.gradient-border {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-lg) + 2px);
+  background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Градиентные карточки */
+.card-gradient {
+  background: linear-gradient(135deg, 
+    rgba(var(--primary-rgb), 0.1) 0%, 
+    rgba(var(--secondary-rgb), 0.05) 100%);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255,255,255,0.1), 
+    transparent);
+  animation: gradient-shimmer 3s infinite;
+}
+
+/* Градиентный прогресс-бар */
+.progress-gradient {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.progress-gradient .bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  background-size: 200% 100%;
+  animation: gradient-shift 2s ease infinite;
+  transition: width 0.5s ease;
+}
+
+/* Градиентный фон страницы */
+.page-gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(-45deg, 
+    rgba(var(--primary-rgb), 0.05), 
+    rgba(var(--secondary-rgb), 0.05), 
+    rgba(var(--accent-rgb), 0.05));
+  background-size: 400% 400%;
+  animation: gradient-flow 20s ease infinite;
+}
+
+/* Градиентные иконки */
+.icon-gradient {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Градиентные разделители */
+.divider-gradient {
+  height: 2px;
+  border: none;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--primary), 
+    var(--secondary), 
+    var(--primary), 
+    transparent);
+  background-size: 200% 100%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Градиентные тени */
+.shadow-gradient {
+  box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3),
+              0 8px 40px rgba(var(--secondary-rgb), 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-gradient:hover {
+  box-shadow: 0 8px 30px rgba(var(--primary-rgb), 0.4),
+              0 16px 60px rgba(var(--secondary-rgb), 0.3);
+}
+
 /* === TRANSITIONS & MICRO-INTERACTIONS === */
 :root {
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);

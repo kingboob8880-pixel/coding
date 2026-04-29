@@ -14,6 +14,9 @@
     <!-- Main Styles -->
     <link rel="stylesheet" href="css/style.css">
     
+    <!-- Animations Library -->
+    <link rel="stylesheet" href="css/animations.css">
+    
     <style>
         /* Session Mode Styles */
         #session-mode-container {
@@ -244,9 +247,12 @@
         .zone-limbs { top: 30px; left: 10px; width: 30px; height: 350px; }
     </style>
 </head>
-<body>
+<body class="page-gradient-bg">
+    <!-- Градиентный фон страницы -->
+    <div class="page-gradient-bg"></div>
+    
     <!-- Navigation -->
-    <nav class="main-nav">
+    <nav class="main-nav gradient-border">
         <div class="nav-brand">
             <span class="logo">☪</span>
             <span class="brand-text">RUKYA PRO <small>v2.0</small></span>
@@ -276,34 +282,34 @@
             </div>
             
             <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-icon">👥</div>
-                    <div class="kpi-value" data-count="24">0</div>
+                <div class="kpi-card card-gradient gradient-border">
+                    <div class="kpi-icon icon-gradient">👥</div>
+                    <div class="kpi-value gradient-text" data-count="24">0</div>
                     <div class="kpi-label">Всего пациентов</div>
                     <div class="kpi-delta positive">↑ 3</div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon">✅</div>
-                    <div class="kpi-value" data-count="18">0</div>
+                <div class="kpi-card card-gradient gradient-border">
+                    <div class="kpi-icon icon-gradient">✅</div>
+                    <div class="kpi-value gradient-text" data-count="18">0</div>
                     <div class="kpi-label">Активных</div>
                     <div class="kpi-delta positive">↑ 2</div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon">⏸</div>
-                    <div class="kpi-value" data-count="4">0</div>
+                <div class="kpi-card card-gradient gradient-border">
+                    <div class="kpi-icon icon-gradient">⏸</div>
+                    <div class="kpi-value gradient-text" data-count="4">0</div>
                     <div class="kpi-label">На паузе</div>
                     <div class="kpi-delta negative">↓ 1</div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-icon">🎉</div>
-                    <div class="kpi-value" data-count="42">0</div>
+                <div class="kpi-card card-gradient gradient-border">
+                    <div class="kpi-icon icon-gradient">🎉</div>
+                    <div class="kpi-value gradient-text" data-count="42">0</div>
                     <div class="kpi-label">Завершённых</div>
                     <div class="kpi-delta positive">↑ 5</div>
                 </div>
             </div>
             
             <div class="dashboard-actions">
-                <button class="btn btn-primary" onclick="navigateTo('#newcase')">
+                <button class="btn btn-primary btn-gradient" onclick="navigateTo('#newcase')">
                     ➕ Новый пациент
                 </button>
                 <button class="btn btn-secondary" onclick="navigateTo('#patients')">
@@ -319,7 +325,7 @@
         <section id="patients" class="page-section" style="display:none;">
             <div class="page-header">
                 <h1>Пациенты</h1>
-                <button class="btn btn-primary" onclick="navigateTo('#newcase')">+ Добавить</button>
+                <button class="btn btn-primary btn-gradient" onclick="navigateTo('#newcase')">+ Добавить</button>
             </div>
             
             <div class="filters-bar">
@@ -410,7 +416,7 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary" onclick="nextStep(2)">Далее →</button>
+                    <button class="btn btn-primary btn-gradient" onclick="nextStep(2)">Далее →</button>
                 </div>
                 
                 <!-- Step 2: Diagnosis -->
@@ -442,13 +448,13 @@
                         </div>
                     </div>
                     
-                    <button class="btn btn-primary" onclick="runDiagnosis()">
+                    <button class="btn btn-primary btn-gradient" onclick="runDiagnosis()">
                         🔍 Провести диагностику
                     </button>
                     
                     <div class="wizard-nav">
                         <button class="btn btn-secondary" onclick="previousStep(1)">← Назад</button>
-                        <button class="btn btn-primary" onclick="nextStep(3)">Далее →</button>
+                        <button class="btn btn-primary btn-gradient" onclick="nextStep(3)">Далее →</button>
                     </div>
                 </div>
                 
@@ -573,7 +579,7 @@
                 <div class="settings-group">
                     <h3>🔑 DeepSeek API Key</h3>
                     <input type="password" class="form-input" id="api-key" placeholder="sk-...">
-                    <button class="btn btn-primary" onclick="saveSettings()">Сохранить</button>
+                    <button class="btn btn-primary btn-gradient" onclick="saveSettings()">Сохранить</button>
                 </div>
                 
                 <div class="settings-group">
@@ -592,6 +598,8 @@
     <script src="js/modules/export-module.js"></script>
     <script src="js/modules/treatment-planner.js"></script>
     <script src="js/modules/session-mode.js"></script>
+    <script src="js/modules/github-module.js"></script>
+    <script src="js/modules/ai-converter.js"></script>
     
     <!-- App Initialization -->
     <script>
@@ -636,11 +644,11 @@
             const result = DiagnosisEngine.analyzeSymptoms(symptoms, complaints);
             
             document.getElementById('diagnosis-content').innerHTML = `
-                <div class="diagnosis-card">
-                    <strong>Основной диагноз:</strong> ${result.primary?.type || 'Не определено'}<br>
-                    <strong>Уверенность:</strong> ${'★'.repeat(result.primary?.confidence || 0)}<br>
-                    <strong>Затронутые зоны:</strong> ${result.bodyMap?.primaryZone || 'Не определено'}<br>
-                    <strong>Рекомендации:</strong> ${result.recommendations?.priority?.[0] || '-'}
+                <div class="diagnosis-card card-gradient gradient-border">
+                    <strong class="gradient-text">Основной диагноз:</strong> ${result.primary?.type || 'Не определено'}<br>
+                    <strong class="gradient-text">Уверенность:</strong> ${'★'.repeat(result.primary?.confidence || 0)}<br>
+                    <strong class="gradient-text">Затронутые зоны:</strong> ${result.bodyMap?.primaryZone || 'Не определено'}<br>
+                    <strong class="gradient-text">Рекомендации:</strong> ${result.recommendations?.priority?.[0] || '-'}
                 </div>
             `;
             
