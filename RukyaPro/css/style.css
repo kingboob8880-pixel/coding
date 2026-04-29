@@ -1,34 +1,219 @@
-/* RUKYA PRO — Основные стили */
+/* RUKYA PRO — Расширенные стили с 25+ темами */
 
 :root {
+    /* Базовые переменные */
+    --primary-color: #c9a063;
+    --primary-dark: #a8824a;
+    --primary-light: #e6c88b;
+    --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    
+    --bg-color: #1e1d1d;
+    --bg-secondary: #2a2929;
+    --bg-tertiary: #353434;
+    --bg-card: #252525;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+    --text-accent: var(--primary-color);
+    
+    --border-color: #404040;
+    --border-light: #505050;
+    
+    --success-color: #4caf50;
+    --success-light: #81c784;
+    --warning-color: #ff9800;
+    --warning-light: #ffb74d;
+    --danger-color: #f44336;
+    --danger-light: #e57373;
+    --info-color: #2196f3;
+    --info-light: #64b5f6;
+    
+    --sidebar-width: 280px;
+    --sidebar-collapsed: 80px;
+    --header-height: 64px;
+    
+    --font-arabic: 'Amiri', serif;
+    --font-interface: 'Inter', sans-serif;
+    
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.4);
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* ============================================
+   КАТЕГОРИИ ТЕМ
+   ============================================ */
+
+/* --- Исламские темы (1-7) --- */
+.theme-classic-gold {
+    --name: 'Classic Gold';
+    --category: 'islamic';
     --primary-color: #c9a063;
     --primary-dark: #a8824a;
     --primary-light: #e6c88b;
     --bg-color: #1e1d1d;
     --bg-secondary: #2a2929;
     --bg-tertiary: #353434;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --text-muted: #808080;
-    --border-color: #404040;
-    --success-color: #4caf50;
-    --warning-color: #ff9800;
-    --danger-color: #f44336;
-    --info-color: #2196f3;
-    --sidebar-width: 260px;
-    --header-height: 64px;
-    --font-arabic: 'Amiri', serif;
-    --font-interface: 'Inter', sans-serif;
 }
 
-/* Темы оформления */
+.theme-makkah {
+    --name: 'Makkah';
+    --category: 'islamic';
+    --primary-color: #d4af37;
+    --primary-dark: #b8941f;
+    --primary-light: #f0d76a;
+    --bg-color: #1a1a1a;
+    --bg-secondary: #252525;
+    --bg-tertiary: #303030;
+}
+
+.theme-madinah {
+    --name: 'Madinah';
+    --category: 'islamic';
+    --primary-color: #2ecc71;
+    --primary-dark: #27ae60;
+    --primary-light: #58d68d;
+    --bg-color: #1a2520;
+    --bg-secondary: #23312a;
+    --bg-tertiary: #2d3d34;
+}
+
+.theme-kaaba {
+    --name: 'Kaaba';
+    --category: 'islamic';
+    --primary-color: #c9a063;
+    --primary-dark: #a8824a;
+    --primary-light: #e6c88b;
+    --bg-color: #0d0d0d;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #252525;
+}
+
+.theme-quran {
+    --name: 'Quran';
+    --category: 'islamic';
+    --primary-color: #1abc9c;
+    --primary-dark: #16a085;
+    --primary-light: #48c9b0;
+    --bg-color: #0f1a18;
+    --bg-secondary: #162623;
+    --bg-tertiary: #1d322e;
+}
+
+.theme-hijrah {
+    --name: 'Hijrah';
+    --category: 'islamic';
+    --primary-color: #3498db;
+    --primary-dark: #2980b9;
+    --primary-light: #5dade2;
+    --bg-color: #1a1f25;
+    --bg-secondary: #232a32;
+    --bg-tertiary: #2d353f;
+}
+
+.theme-noor {
+    --name: 'Noor (Light)';
+    --category: 'islamic';
+    --primary-color: #f1c40f;
+    --primary-dark: #d4ac0d;
+    --primary-light: #f7dc6f;
+    --bg-color: #1e1e1e;
+    --bg-secondary: #2a2a2a;
+    --bg-tertiary: #353535;
+}
+
+/* --- Природные темы (8-14) --- */
 .theme-emerald {
+    --name: 'Emerald';
+    --category: 'nature';
     --primary-color: #50c878;
     --primary-dark: #3da862;
     --primary-light: #7ddc9a;
+    --bg-color: #1a2520;
+    --bg-secondary: #23312a;
+    --bg-tertiary: #2d3d34;
 }
 
+.theme-desert {
+    --name: 'Desert';
+    --category: 'nature';
+    --primary-color: #d4a574;
+    --primary-dark: #c4915f;
+    --primary-light: #e8c9a8;
+    --bg-color: #2c2420;
+    --bg-secondary: #3d322b;
+    --bg-tertiary: #4a3d34;
+}
+
+.theme-marine {
+    --name: 'Marine';
+    --category: 'nature';
+    --primary-color: #00bcd4;
+    --primary-dark: #0097a7;
+    --primary-light: #4dd0e1;
+    --bg-color: #1a252a;
+    --bg-secondary: #233238;
+    --bg-tertiary: #2d4047;
+}
+
+.theme-sage {
+    --name: 'Sage';
+    --category: 'nature';
+    --primary-color: #9caf88;
+    --primary-dark: #879473;
+    --primary-light: #bcc9a8;
+    --bg-color: #1e221d;
+    --bg-secondary: #2a2f27;
+    --bg-tertiary: #353c31;
+}
+
+.theme-sky {
+    --name: 'Sky';
+    --category: 'nature';
+    --primary-color: #5dade2;
+    --primary-dark: #3498db;
+    --primary-light: #85c1e9;
+    --bg-color: #1a2229;
+    --bg-secondary: #232d36;
+    --bg-tertiary: #2d3842;
+}
+
+.theme-ocean {
+    --name: 'Ocean';
+    --category: 'nature';
+    --primary-color: #0077be;
+    --primary-dark: #005c99;
+    --primary-light: #3399cc;
+    --bg-color: #0a1929;
+    --bg-secondary: #0f2338;
+    --bg-tertiary: #142d47;
+}
+
+.theme-forest {
+    --name: 'Forest';
+    --category: 'nature';
+    --primary-color: #228b22;
+    --primary-dark: #1a6b1a;
+    --primary-light: #32a832;
+    --bg-color: #1a221a;
+    --bg-secondary: #232d23;
+    --bg-tertiary: #2d382d;
+}
+
+/* --- Тёмные темы (15-20) --- */
 .theme-night {
+    --name: 'Night';
+    --category: 'dark';
     --primary-color: #6c5ce7;
     --primary-dark: #5b4cdb;
     --primary-light: #a29bfe;
@@ -38,21 +223,30 @@
 }
 
 .theme-royal {
+    --name: 'Royal';
+    --category: 'dark';
     --primary-color: #9b59b6;
     --primary-dark: #8e44ad;
     --primary-light: #be90d4;
+    --bg-color: #1a1520;
+    --bg-secondary: #251d2e;
+    --bg-tertiary: #30253c;
 }
 
-.theme-desert {
-    --primary-color: #d4a574;
-    --primary-dark: #c4915f;
-    --primary-light: #e8c9a8;
-    --bg-color: #2c2420;
-    --bg-secondary: #3d322b;
-    --bg-tertiary: #4a3d34;
+.theme-obsidian {
+    --name: 'Obsidian';
+    --category: 'dark';
+    --primary-color: #607d8b;
+    --primary-dark: #455a64;
+    --primary-light: #90a4ae;
+    --bg-color: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
 }
 
 .theme-pearl {
+    --name: 'Pearl';
+    --category: 'dark';
     --primary-color: #bdc3c7;
     --primary-dark: #95a5a6;
     --primary-light: #ecf0f1;
@@ -61,31 +255,138 @@
     --bg-tertiary: #3d566e;
 }
 
-.theme-marine {
-    --primary-color: #00bcd4;
-    --primary-dark: #0097a7;
-    --primary-light: #4dd0e1;
+.theme-shadow {
+    --name: 'Shadow';
+    --category: 'dark';
+    --primary-color: #7f8c8d;
+    --primary-dark: #636e72;
+    --primary-light: #95a5a6;
+    --bg-color: #0a0a0a;
+    --bg-secondary: #141414;
+    --bg-tertiary: #1e1e1e;
 }
 
-.theme-sage {
-    --primary-color: #9caf88;
-    --primary-dark: #879473;
-    --primary-light: #bcc9a8;
+.theme-midnight {
+    --name: 'Midnight';
+    --category: 'dark';
+    --primary-color: #34495e;
+    --primary-dark: #2c3e50;
+    --primary-light: #5d6d7e;
+    --bg-color: #0c0c14;
+    --bg-secondary: #14141f;
+    --bg-tertiary: #1c1c2a;
 }
 
-.theme-sky {
-    --primary-color: #5dade2;
-    --primary-dark: #3498db;
-    --primary-light: #85c1e9;
+/* --- Медицинские темы (21-25) --- */
+.theme-medical {
+    --name: 'Medical';
+    --category: 'medical';
+    --primary-color: #00a8a8;
+    --primary-dark: #008080;
+    --primary-light: #33cccc;
+    --bg-color: #1a2525;
+    --bg-secondary: #233232;
+    --bg-tertiary: #2d4040;
 }
 
-.theme-obsidian {
-    --primary-color: #607d8b;
-    --primary-dark: #455a64;
-    --primary-light: #90a4ae;
-    --bg-color: #121212;
-    --bg-secondary: #1e1e1e;
-    --bg-tertiary: #2a2a2a;
+.theme-healing {
+    --name: 'Healing';
+    --category: 'medical';
+    --primary-color: #27ae60;
+    --primary-dark: #219a52;
+    --primary-light: #58d68d;
+    --bg-color: #1a2520;
+    --bg-secondary: #23322a;
+    --bg-tertiary: #2d4034;
+}
+
+.theme-calming {
+    --name: 'Calming';
+    --category: 'medical';
+    --primary-color: #7fb3d5;
+    --primary-dark: #6495b9;
+    --primary-light: #a9cce3;
+    --bg-color: #1a2229;
+    --bg-secondary: #232d36;
+    --bg-tertiary: #2d3842;
+}
+
+.theme-serenity {
+    --name: 'Serenity';
+    --category: 'medical';
+    --primary-color: #9b7ebd;
+    --primary-dark: #886dae;
+    --primary-light: #b795cb;
+    --bg-color: #1f1a25;
+    --bg-secondary: #2a2332;
+    --bg-tertiary: #352d40;
+}
+
+.theme-balance {
+    --name: 'Balance';
+    --category: 'medical';
+    --primary-color: #f39c12;
+    --primary-dark: #d68910;
+    --primary-light: #f7b548;
+    --bg-color: #25201a;
+    --bg-secondary: #322a23;
+    --bg-tertiary: #40342d;
+}
+
+/* --- Премиум темы (26-30) --- */
+.theme-golden-hour {
+    --name: 'Golden Hour';
+    --category: 'premium';
+    --primary-color: #ff6b35;
+    --primary-dark: #e55a2b;
+    --primary-light: #ff8c5a;
+    --bg-color: #1a1512;
+    --bg-secondary: #251d18;
+    --bg-tertiary: #30251e;
+}
+
+.theme-aurora {
+    --name: 'Aurora';
+    --category: 'premium';
+    --primary-color: #00ff87;
+    --primary-dark: #00cc6c;
+    --primary-light: #66ffb3;
+    --bg-color: #0a1a15;
+    --bg-secondary: #0f251e;
+    --bg-tertiary: #143027;
+}
+
+.theme-nebula {
+    --name: 'Nebula';
+    --category: 'premium';
+    --primary-color: #bd00ff;
+    --primary-dark: #9900cc;
+    --primary-light: #d666ff;
+    --bg-color: #140a1f;
+    --bg-secondary: #1f0f2e;
+    --bg-tertiary: #2a143d;
+}
+
+.theme-sunset {
+    --name: 'Sunset';
+    --category: 'premium';
+    --primary-color: #ff512f;
+    --primary-dark: #e04323;
+    --primary-light: #ff7b5a;
+    --bg-color: #1f1412;
+    --bg-secondary: #2e1d18;
+    --bg-tertiary: #3d251e;
+}
+
+.theme-cosmic {
+    --name: 'Cosmic';
+    --category: 'premium';
+    --primary-color: #667eea;
+    --primary-dark: #5a67d8;
+    --primary-light: #8a98f0;
+    --bg-color: #0f141f;
+    --bg-secondary: #161d2e;
+    --bg-tertiary: #1d263d;
 }
 
 * {
@@ -876,4 +1177,296 @@ body {
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
+}
+
+/* ============================================
+   РАСШИРЕННЫЕ СТИЛИ ДЛЯ 30 ТЕМ
+   ============================================ */
+
+/* Высокий контраст */
+.high-contrast {
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;
+    --border-color: #ffffff;
+    --bg-tertiary: #404040;
+}
+
+.high-contrast .card,
+.high-contrast .btn {
+    border-width: 2px;
+}
+
+/* Анимация смены темы */
+body {
+    transition: background-color var(--transition-normal), 
+                color var(--transition-normal);
+}
+
+/* Стили для переключателя тем */
+.theme-switcher {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 16px 0;
+}
+
+.theme-card {
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-align: center;
+}
+
+.theme-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.theme-card.active {
+    border-color: var(--primary-color);
+    background: rgba(var(--primary-color), 0.1);
+}
+
+.theme-preview {
+    width: 100%;
+    height: 80px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        var(--preview-primary, var(--primary-color)) 0%, 
+        var(--preview-dark, var(--primary-dark)) 100%);
+}
+
+.theme-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.theme-category {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Конструктор палитры */
+.palette-builder {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-top: 24px;
+}
+
+.color-picker-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.color-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.color-input-wrapper input[type="color"] {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: none;
+}
+
+.color-input-wrapper label {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.color-value {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+/* Категории тем (табы) */
+.theme-categories {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.category-tab {
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    color: var(--text-secondary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.category-tab:hover {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.category-tab.active {
+    background: var(--primary-color);
+    color: #000;
+    border-color: var(--primary-color);
+}
+
+/* Режимы отображения тем */
+.theme-view-modes {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.view-mode-btn {
+    padding: 6px 12px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.view-mode-btn.active {
+    background: var(--primary-color);
+    color: #000;
+}
+
+/* Превью темы в карточке пациента */
+.theme-preview-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.theme-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.theme-preview-badge {
+    padding: 4px 8px;
+    background: var(--primary-color);
+    color: #000;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Адаптивность для конструктора тем */
+@media (max-width: 768px) {
+    .theme-switcher {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    .theme-preview {
+        height: 60px;
+    }
+    
+    .color-picker-group {
+        grid-template-columns: 1fr;
+    }
+    
+    .theme-categories {
+        justify-content: center;
+    }
+}
+
+/* Печать с темой */
+@media print {
+    .theme-switcher,
+    .palette-builder,
+    .theme-categories {
+        display: none !important;
+    }
+}
+
+/* Scrollbar для панели тем */
+.theme-panel-scroll {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.theme-panel-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.theme-panel-scroll::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+.theme-panel-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-sm);
+}
+
+.theme-panel-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Градиентные фоны для премиум тем */
+.theme-golden-hour .main-content,
+.theme-sunset .main-content {
+    background-image: linear-gradient(180deg, transparent 0%, rgba(255, 107, 53, 0.05) 100%);
+}
+
+.theme-aurora .main-content,
+.theme-nebula .main-content {
+    background-image: radial-gradient(circle at 20% 50%, rgba(0, 255, 135, 0.05) 0%, transparent 50%);
+}
+
+.theme-cosmic .main-content {
+    background-image: radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 40%);
+}
+
+/* Эффект свечения для премиум тем */
+.theme-aurora .btn-primary,
+.theme-nebula .btn-primary,
+.theme-cosmic .btn-primary {
+    box-shadow: 0 0 20px rgba(var(--primary-color), 0.4);
+}
+
+.theme-aurora .btn-primary:hover,
+.theme-nebula .btn-primary:hover,
+.theme-cosmic .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(var(--primary-color), 0.6);
 }

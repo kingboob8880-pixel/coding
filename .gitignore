@@ -28,14 +28,26 @@ __pycache__/
 .Python
 venv/
 .venv/
-.env
+.venv3/
+env/
+ENV/
+.ENV/
 
 # Coverage
 .coverage
 coverage/
 htmlcov/
 
-# Compression
+# IDE
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compressed files
 *.zip
 *.gz
 *.tar
