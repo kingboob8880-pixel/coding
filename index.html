@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лекарь Абу Мухаммад</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 4rem;
+            color: #e8d5b7;
+            text-shadow: 0 0 20px rgba(232, 213, 183, 0.5),
+                         0 0 40px rgba(232, 213, 183, 0.3),
+                         0 0 60px rgba(232, 213, 183, 0.2);
+            letter-spacing: 3px;
+            animation: glow 3s ease-in-out infinite alternate;
+            padding: 40px 60px;
+            border: 3px solid rgba(232, 213, 183, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(232, 213, 183, 0.5),
+                             0 0 40px rgba(232, 213, 183, 0.3),
+                             0 0 60px rgba(232, 213, 183, 0.2);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(232, 213, 183, 0.8),
+                             0 0 60px rgba(232, 213, 183, 0.5),
+                             0 0 90px rgba(232, 213, 183, 0.3);
+            }
+        }
+
+        .ornament {
+            font-size: 2rem;
+            color: #c9a961;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(232, 213, 183, 0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+                padding: 30px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <h1 class="title">Лекарь Абу Мухаммад</h1>
+        <div class="ornament">✦ ⚜ ✦</div>
+    </div>
+
+    <script>
+        // Создание плавающих частиц
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
