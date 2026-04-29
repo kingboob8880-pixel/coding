@@ -1,0 +1,8 @@
+[
+  { "id": "cupping", "name_ru": "Хиджама", "description": "Кровопускание по Сунне", "application": "На затылок, спину, стопы" },
+  { "id": "oil_massage", "name_ru": "Массаж маслом", "description": "Втирание масла после чтения", "application": "На больной орган или всё тело" },
+  { "id": "water_drinking", "name_ru": "Питьё воды", "description": "Вода после чтения рукьи", "application": "3 раза в день по стакану" },
+  { "id": "bath_salt", "name_ru": "Ванна с солью", "description": "Очищающая ванна", "application": "2-3 раза в неделю" },
+  { "id": "incense", "name_ru": "Окуривание", "description": "Ладан и кыст аль-хинди", "application": "Окуривать помещение и одежду" },
+  { "id": "honey", "name_ru": "Мёд", "description": "Мёд после чтения", "application": "1 ложка утром натощак" }
+]

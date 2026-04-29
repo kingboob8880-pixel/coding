@@ -1,0 +1,14 @@
+[
+  { "id": "sihr_mahfi", "name_ru": "Скрытый сихр", "name_ar": "سحر مخفي", "category": "sihr", "severity_base": 3, "description": "Колдовство, скрытое от глаз, влияющее на состояние человека незаметно" },
+  { "id": "sihr_tafriq", "name_ru": "Сихр разлада", "name_ar": "سحر التفريق", "category": "sihr", "severity_base": 4, "description": "Колдовство для разлада между супругами или близкими" },
+  { "id": "sihr_mahabba", "name_ru": "Сихр привязанности", "name_ar": "سحر المحبة", "category": "sihr", "severity_base": 4, "description": "Колдовство для навязчивой привязанности к человеку" },
+  { "id": "sihr_bayt", "name_ru": "Сихр в доме", "name_ar": "سحر البيت", "category": "sihr", "severity_base": 3, "description": "Колдовство, помещённое в жилище" },
+  { "id": "sihr_mujaddad", "name_ru": "Обновляемый сихр", "name_ar": "سحر متجدد", "category": "sihr", "severity_base": 5, "description": "Колдовство, которое возобновляется" },
+  { "id": "massas_jinn", "name_ru": "Касание джинна", "name_ar": "مس الجن", "category": "jinn", "severity_base": 4, "description": "Прикосновение джинна к человеку" },
+  { "id": "ayn_hasida", "name_ru": "Сглаз с завистью", "name_ar": "عين حاسدة", "category": "ayn", "severity_base": 2, "description": "Взгляд с завистью, причиняющий вред" },
+  { "id": "hasad", "name_ru": "Зависть", "name_ar": "حسد", "category": "ayn", "severity_base": 2, "description": "Чувство зависти без сглаза" },
+  { "id": "waswasa_dini", "name_ru": "Религиозная васваса", "name_ar": "وسوسة دينية", "category": "waswasa", "severity_base": 3, "description": "Навязчивые сомнения в вере и поклонении" },
+  { "id": "khawf", "name_ru": "Страх", "name_ar": "خوف", "category": "emotional", "severity_base": 2, "description": "Необоснованный страх" },
+  { "id": "huzn", "name_ru": "Печаль", "name_ar": "حزن", "category": "emotional", "severity_base": 2, "description": "Глубокая печаль и уныние" },
+  { "id": "ghadab", "name_ru": "Гнев", "name_ar": "غضب", "category": "emotional", "severity_base": 2, "description": "Неконтролируемый гнев" }
+]

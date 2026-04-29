@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUKYA PRO — Ash-Shifa</title>
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiUlVLWUEgUFJPIiwi c2hvcnRfbmFtZSI6IlJ1a3lhIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJzdGFydF91cmwiOiIvIiwiYmFja2dyb3VuZF9jb2xvciI6IiMxZTFkMWQiLCJ0aGVtZV9jb2xvciI6IiNjOWEwNjMiLCJpY29ucyI6W3sic3JjIjoiaHR0cHM6Ly92aWEucGxhY2Vob2xkZXIuY29tLzE5MngxOTIvYzlhMDYzLzFlMWQxZD90ZXh0PVJQIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9XX0=">
+    <meta name="theme-color" content="#c9a063">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Боковая навигация -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <span class="logo-icon">☪</span>
+                <span class="logo-text">RUKYA PRO</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#/dashboard" class="nav-item active" data-route="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Дашборд</span>
+                </a>
+                <a href="#/newcase" class="nav-item" data-route="newcase">
+                    <span class="nav-icon">➕</span>
+                    <span class="nav-label">Новый приём</span>
+                </a>
+                <a href="#/patients" class="nav-item" data-route="patients">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-label">Пациенты</span>
+                </a>
+                <a href="#/plans" class="nav-item" data-route="plans">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-label">Планы</span>
+                </a>
+                <a href="#/groups" class="nav-item" data-route="groups">
+                    <span class="nav-icon">📁</span>
+                    <span class="nav-label">Группы</span>
+                </a>
+                <a href="#/calendar" class="nav-item" data-route="calendar">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-label">Календарь</span>
+                </a>
+                <a href="#/certificates" class="nav-item" data-route="certificates">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-label">Заключения</span>
+                </a>
+                <a href="#/library" class="nav-item" data-route="library">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-label">Библиотека</span>
+                </a>
+                <a href="#/import" class="nav-item" data-route="import">
+                    <span class="nav-icon">📥</span>
+                    <span class="nav-label">Импорт</span>
+                </a>
+                <a href="#/settings" class="nav-item" data-route="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">Настройки</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="healer-name" id="healerNameDisplay">Абу Мухаммад</div>
+                <div class="version">v1.0.0</div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Верхняя панель -->
+            <header class="top-bar">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <h1 class="page-title" id="pageTitle">Дашборд</h1>
+                <div class="top-actions">
+                    <button class="btn-icon" id="globalSearch" title="Поиск (Ctrl+K)">🔍</button>
+                    <button class="btn-icon" id="themeToggle" title="Сменить тему">🎨</button>
+                    <div class="user-avatar">AM</div>
+                </div>
+            </header>
+
+            <!-- Контейнер страниц -->
+            <div class="page-container" id="pageContainer">
+                <!-- Страницы будут загружаться динамически -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальные окна -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Уведомления -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Скрипты -->
+    <script src="js/storage.js"></script>
+    <script src="js/data-loader.js"></script>
+    <script src="js/diagnosis.js"></script>
+    <script src="js/builder.js"></script>
+    <script src="js/plan-builder.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
